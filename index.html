@@ -1,1 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEDIOTEC SENAC - ANTHONY DOS SANTOS CARVALHO</title>
+
+<style>
+:root {
+  --bg-dark: #0a0d14;
+  --bg-panel: #131924;
+  --border-duck: #f4c430; /* Amarelo Pato */
+  --neon-duck: #ffdd67;
+  --duck-orange: #f58220; /* Laranja do Bico */
+  --text-main: #f5f8fc;
+  --text-muted: #8fa0b5;
+  --shadow-duck: rgba(244, 196, 48, 0.2);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Courier New", monospace;
+  color: var(--text-main);
+  background: radial-gradient(circle at center, #1b2234 0%, var(--bg-dark) 70%);
+  padding: 24px;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, .25) 50%);
+  background-size: 100% 4px;
+  opacity: .15;
+  pointer-events: none;
+}
+
+.shell {
+  width: min(1400px, 100%);
+  margin: auto;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+}
+
+.sidebar {
+  background: var(--bg-panel);
+  border: 2px solid var(--border-duck);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, .5);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+
+/* Ícone do Pato de Cartola no topo da barra lateral */
+.duck-logo {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 10px var(--border-duck));
+}
+
+.sidebar::before {
+  content: "CYBER_DUCK_PROTOCOL: ACTIVE";
+  position: absolute;
+  bottom: 12px;
+  left: 20px;
+  font-size: .7rem;
+  color: var(--duck-orange);
+  letter-spacing: 1px;
+}
+
+.system-title {
+  font-size: 1.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.system-title span {
+  display: inline-block;
+  width: max-content;
+  color: var(--duck-orange);
+  border: 1px solid var(--duck-orange);
+  padding: 4px 8px;
+  font-size: .8rem;
+}
+
+.system-title span.location {
+  color: #0a0d14;
+  font-weight: bold;
+  border-color: var(--border-duck);
+  background-color: var(--border-duck);
+}
+
+.sys-stat-box {
+  border-left: 3px solid var(--border-duck);
+  padding-left: 12px;
+  color: var(--text-muted);
+  font-size: .85rem;
+}
+
+.sys-stat-box div {
+  margin-bottom: 8px;
+}
+
+.sys-stat-box b {
+  color: var(--text-main);
+}
+
+.main-console {
+  background: var(--bg-panel);
+  border: 2px solid var(--border-duck);
+  box-shadow: 0 12px 40px var(--shadow-duck);
+  padding: 35px;
+}
+
+.console-header {
+  border-bottom: 1px solid var(--border-duck);
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+}
+
+.console-header h2 {
+  color: var(--border-duck);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.console-manifesto {
+  background: rgba(0, 0, 0, .4);
+  border: 1px solid var(--border-duck);
+  padding: 25px;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.console-manifesto h3 {
+  color: var(--duck-orange);
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  border-bottom: 1px dashed rgba(244, 196, 48, 0.3);
+  padding-bottom: 5px;
+}
+
+.console-manifesto ul {
+  margin-left: 20px;
+}
+
+.console-manifesto li {
+  margin-bottom: 8px;
+  list-style-type: "🦆 ";
+}
+
+.console-manifesto b {
+  color: var(--border-duck);
+}
+
+.section-label {
+  color: var(--text-muted);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.action-btn {
+  background: #09111d;
+  border: 2px solid var(--border-duck);
+  color: white;
+  padding: 18px;
+  min-height: 90px;
+  cursor: pointer;
+  text-align: left;
+  transition: .2s;
+  position: relative;
+}
+
+.action-btn:hover {
+  border-color: var(--duck-orange);
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(245, 130, 32, .25);
+}
+
+.action-btn::after {
+  content: "🎩";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+}
+
+.btn-title {
+  display: block;
+  font-weight: 900;
+  margin-bottom: 6px;
+  color: var(--border-duck);
+}
+
+.btn-subtitle {
+  color: var(--text-muted);
+  font-size: .8rem;
+}
+
+.footer-box {
+  margin-top: 30px;
+  border-top: 1px solid var(--border-duck);
+  padding-top: 20px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+@media(max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+<body>
+
+<main class="shell">
+  <div class="dashboard">
+
+    <!-- BARRA LATERAL CUSTOMIZADA -->
+    <aside class="sidebar">
+      <div class="duck-logo">🎩<br>🦆</div>
+      
+      <h1 class="system-title">
+        MEDIOTEC SENAC
+        <span class="location">Recife</span>
+        <span>1º ANO E</span>
+      </h1>
+
+      <div class="sys-stat-box">
+        <div>PROFESSOR: <b>LUIZ CAVALCANTI</b></div>
+        <div>MISSÃO: <b>GITHUB + HTML</b></div>
+      </div>
+
+      <div class="sys-stat-box" style="margin-top: auto; margin-bottom: 25px;">
+        <div>OPERADOR: <br><b>ANTHONY CARVALHO</b></div>
+      </div>
+    </aside>
+
+    <!-- CONSOLE PRINCIPAL COM SEUS DADOS -->
+    <section class="main-console">
+      <header class="console-header">
+        <h2>MISSÃO 01 // MEU PRIMEIRO PORTFÓLIO - Anthony dos Santos Carvalho</h2>
+      </header>
+
+      <div class="console-manifesto">
+        <h3>DADOS DO DESENVOLVEDOR</h3>
+        <ul>
+          <li><b>Nome Completo:</b> Anthony dos Santos Carvalho</li>
+          <li><b>Apresentação:</b> Estudante no Mediotec Senac, focado em dominar o desenvolvimento web e a criação de universos interativos.</li>
+          <li><b>Jogo Favorito:</b> Shinobi (Batalha RPG / Minecraft)</li>
+          <li><b>Tecnologia que deseja aprender:</b> Programação e desenvolvimento de jogos</li>
+          <li><b>Projetos Atuais:</b> "O Pato do Dinheiro" & "O da Pi"</li>
+        </ul>
+      </div>
+
+      <div class="section-label">
+        [ ETAPAS DA MISSÃO COMPLEMENTADAS ]
+      </div>
+
+      <div class="action-grid">
+        <button class="action-btn">
+          <span class="btn-title">ETAPA 01</span>
+          <span class="btn-subtitle">CRIAR CONTA NO GITHUB</span>
+        </button>
+
+        <button class="action-btn">
+          <span class="btn-title">ETAPA 02</span>
+          <span class="btn-subtitle">CRIAR REPOSITÓRIO</span>
+        </button>
+
+        <button class="action-btn">
+          <span class="btn-title">ETAPA 03</span>
+          <span class="btn-subtitle">CRIAR INDEX.HTML</span>
+        </button>
+
+        <button class="action-btn">
+          <span class="btn-title">ETAPA 04</span>
+          <span class="btn-subtitle">REALIZAR PRIMEIRO COMMIT</span>
+        </button>
+
+        <button class="action-btn">
+          <span class="btn-title">ETAPA 05</span>
+          <span class="btn-subtitle">PUBLICAR NO GITHUB PAGES</span>
+        </button>
+      </div>
+
+      <div class="footer-box">
+        <strong>DESAFIO EXTRA: PROTOCOLO "PATO DE CARTOLA"</strong>
+        <br><br>
+        Interface customizada com sucesso. Código limpo, sem erros de sintaxe e pronto para ser enviado ao repositório remoto do GitHub.
+      </div>
+    
+    </section>
+
+  </div>
+</main>
+
+</body>
+</html>
 
